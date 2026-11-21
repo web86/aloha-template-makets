@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Home — design v2</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#16232A}
+a{color:#16232A}a:hover{color:#075056}
+.pg{font-family:'Outfit',system-ui,sans-serif;color:#16232A;background:#F3F6F6;font-size:18px;line-height:1.6}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px;box-sizing:border-box}
+.serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.01em}
+.it{font-style:italic}
+.eye{font-size:13px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;margin:0 0 18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;box-sizing:border-box;border:1.5px solid transparent;white-space:nowrap;font-family:inherit;cursor:pointer;background:transparent}
+.btn-o{background:#FF5B04;color:#fff;font-weight:700;font-size:19px}
+.btn-o:hover{background:#e84f00;color:#fff}
+.btn-line{border-color:currentColor}
+h2.serif{font-size:clamp(40px,5vw,60px);line-height:1.04;margin:0 0 20px}
+h3{font-size:22px;line-height:1.25;margin:0 0 6px;font-weight:600}
+.mut{opacity:.72}
+.nav a{color:#16232A;text-decoration:none;font-size:16px;font-weight:500}
+.nav a:hover{color:#075056}
+.fld{display:flex;flex-direction:column;gap:2px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#4b5a60;flex:1 1 170px;padding:10px 22px;border-right:1px solid #cdd8db}
+.fld input,.fld select{border:0;background:transparent;font-family:inherit;font-size:17px;color:#16232A;padding:0;min-height:30px;letter-spacing:0;text-transform:none}
+.ph{position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:16px;box-sizing:border-box;color:#F3F6F6;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.ph span{opacity:.7}
+.std{border-top:1px solid rgba(243,246,246,.28);padding-top:22px}
+.std svg{width:28px;height:28px;padding:14px;border-radius:50%;background:rgba(243,246,246,.12);stroke:#F3F6F6;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-bottom:20px;display:block}
+.std h3{color:#F3F6F6;font-size:20px}
+.std p{color:#F3F6F6;opacity:.8;font-size:16px;margin:0;line-height:1.55}
+.card{text-decoration:none;color:#16232A;display:block}
+.card img{transition:transform .6s ease}
+.card:hover img{transform:scale(1.03)}
+.tagl{display:inline-block;font-size:13px;padding:4px 12px;border-radius:999px;background:#E4EEF0;color:#16232A;margin:8px 6px 0 0}
+.stat{font-family:'Outfit',system-ui,sans-serif;font-weight:700;font-size:clamp(56px,6vw,80px);line-height:1;letter-spacing:-.03em;margin:0}
+.quote{background:#fff;border-radius:6px;padding:32px;flex:0 0 380px;scroll-snap-align:start;margin:0;display:flex;flex-direction:column;justify-content:space-between;box-sizing:border-box}
+.rnd{width:52px;height:52px;padding:0;border-color:#16232A;color:#16232A}
+.foot a{color:#F3F6F6;text-decoration:none;font-size:15px;opacity:.8}
+.foot a:hover{opacity:1;color:#FF5B04}
+.soc{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid rgba(243,246,246,.35);border-radius:50%;color:#F3F6F6}
+.soc:hover{color:#16232A;background:#F3F6F6}
+.todo{color:#F3F6F6}
+.todo .ph{aspect-ratio:4/3;border-radius:6px}
+.todo h3{margin-top:16px;font-size:20px}
+.todo p{font-size:15px;margin:0;opacity:.72;line-height:1.5}
+.hscroll{scrollbar-width:none}
+.hscroll::-webkit-scrollbar{display:none}
+.hcard{flex:0 0 calc((100% - 72px) / 3.4);min-width:260px;scroll-snap-align:start}
+</style>
+</helmet>
+<div class="pg">
+
+<!-- HERO -->
+<section style="position:relative;min-height:880px;overflow:hidden;background:#2b2019;color:#F3F6F6">
+<img src="./assets/3557956acbd0eaba40715788619508cd.jpg" alt="A family on the lanai of an oceanfront living room at sunset, palms and surf below" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block">
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,35,42,.2) 0%,rgba(22,35,42,.05) 30%,rgba(22,35,42,.25) 55%,rgba(22,35,42,.82) 100%)"></div>
+
+<header style="position:relative;z-index:2;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;padding:18px max(40px, calc((100% - 1280px) / 2 + 40px));background:#fff;color:#16232A;box-shadow:0 1px 0 rgba(22,35,42,.08)">
+<a href="#" aria-label="Aloha Hello home" style="display:flex;align-items:center"><img src="./assets/15c3d4fd7ed48094b2cc376fcae6f058.svg" alt="Aloha Hello Vacation Rentals" style="height:56px;width:auto;display:block"></a>
+<nav class="nav" aria-label="Main" style="display:flex;flex-wrap:wrap;gap:8px 36px">
+<a href="Rentals.dc.html">Vacation Rentals</a><a href="Area.dc.html">Big Island</a><a href="Homeowners.dc.html">Homeowners</a><a href="Invest.dc.html">Invest</a><a href="#">About</a>
+</nav>
+<div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+<a href="tel:+16504027916" style="color:#16232A;text-decoration:none;line-height:1.2"><span style="display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#4b5a60">Call us · local team</span><span style="font-size:19px;font-weight:500">+1 (650) 402-7916</span></a>
+<a class="btn btn-o" href="Rentals.dc.html">Book Now</a>
+</div>
+</header>
+
+<div class="wrap" style="position:relative;z-index:2;padding-top:200px;padding-bottom:80px">
+<p class="eye" style="color:#F3F6F6;text-shadow:0 1px 12px rgba(22,35,42,.5)">Kohala Coast · Big Island, Hawaiʻi</p>
+<h1 class="serif" style="font-size:clamp(52px,7vw,100px);line-height:.98;margin:0 0 24px;max-width:1020px">Big Island vacation homes</h1>
+<p style="font-size:21px;max-width:680px;margin:0 0 44px;opacity:.92">Designer homes in Mauna Lani and Waikoloa, on the sunny side of the island.</p>
+
+<form style="display:flex;flex-wrap:wrap;align-items:center;background:#F3F6F6;border-radius:40px;padding:8px 8px 8px 12px;max-width:900px;box-sizing:border-box;gap:4px 0">
+<label class="fld">Arrive<input type="date"></label>
+<label class="fld">Depart<input type="date"></label>
+<label class="fld" style="border-right:0">Guests<select><option>4 guests</option><option>2 guests</option><option>6 guests</option><option>8+ guests</option></select></label>
+<a class="btn btn-o" href="Rentals.dc.html" style="min-height:60px;padding:0 40px">Search</a>
+</form>
+<div style="display:flex;flex-wrap:wrap;gap:10px 36px;margin-top:22px;font-size:16px">
+<span><strong style="color:#F3F6F6;font-weight:600">Book direct, pay less</strong> <span style="opacity:.85">save 15% vs Airbnb</span></span>
+<span style="opacity:.85">Not sure where to stay? <a href="#" style="color:#F3F6F6">Help me choose →</a></span>
+</div>
+</div>
+</section>
+
+<!-- STANDARD -->
+<section style="background:#075056;color:#F3F6F6;padding:120px 0">
+<div class="wrap">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:64px">
+<div style="max-width:760px"><p class="eye" style="color:#F3F6F6;opacity:.8">The Aloha Hello Standard</p><h2 class="serif" style="margin:0">Luxury hotel comfort, <span class="it">vacation home freedom</span></h2></div>
+<p style="max-width:380px;margin:0;opacity:.82">What you get in every one of our homes, not just the best one.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:52px 40px">
+<div class="std"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M3 6v19M27 25v-8a3 3 0 0 0-3-3H3M3 20h24"></path><rect x="6" y="9.5" width="7" height="4.5" rx="1.5"></rect></svg><h3>Premium mattresses</h3><p>Every bed in every home is a Stearns &amp; Foster, one of America’s top luxury mattress brands. Deep, quiet sleep after a long day in the sun.</p></div>
+<div class="std"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M4 8c4 1.5 18 1.5 22 0c-1.2 3-1.2 11 0 14c-4-1.5-18-1.5-22 0c1.2-3 1.2-11 0-14z"></path><path d="M8.5 15c4 1 9 1 13 0"></path></svg><h3>Hotel-grade white cotton</h3><p>100% cotton sheets and towels, five-star hotel grade.</p></div>
+<div class="std"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 4h16v22H7zM11 11l2 2 4-4M11 19h8"></path></svg><h3>Quality control</h3><p>After every clean, a separate inspector checks the home against a 150-point list before you arrive.</p></div>
+<div class="std"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M9 4h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A18 18 0 0 1 7 6a2 2 0 0 1 2-2Z"></path></svg><h3>24/7 support from real people</h3><p>Call or text any time. A person from our local team answers, not a bot or a call center.</p></div>
+<div class="std"><svg viewBox="0 0 30 30" aria-hidden="true"><rect x="4" y="4" width="18" height="7" rx="2"></rect><path d="M22 7.5h3.5v6H14v4"></path><rect x="12" y="17.5" width="4" height="9" rx="1.5"></rect></svg><h3>Renovated and designed</h3><p>Our own design and renovation team brings every home up to high-end standards.</p></div>
+<div class="std"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M3 25h7v-5h6v-5h6v-5h5"></path><path d="M3 25h24"></path></svg><h3>Step-free when you need it</h3><p>Homes with a ground-floor bedroom and bath, no stairs.</p></div>
+<div class="std"><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="16" r="10"></circle><path d="M15 6c-2 0-3 1.5-2 3 .8 1.2 2.6.6 2.4-.8"></path><circle cx="11.5" cy="15" r=".9" fill="currentColor" stroke="none"></circle><circle cx="18.5" cy="15" r=".9" fill="currentColor" stroke="none"></circle><path d="M11.5 19.5c2 1.8 5 1.8 7 0"></path></svg><h3>Ready for little ones</h3><p>High chair, crib, kids’ dishes, baby bath and more, waiting for you when you arrive.</p></div>
+<div class="std"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M3 20c4 0 4 3 8 3s4-3 8-3 4 3 8 3M3 14c4 0 4 3 8 3s4-3 8-3 4 3 8 3M21 7a3 3 0 1 0 0 .01"></path></svg><h3>Resort access</h3><p>In select homes: Mauna Lani Beach access, a Hilton pool pass, or both. Marked on each home.</p></div>
+</div>
+</div>
+</section>
+
+<!-- HOMES -->
+<section style="padding:120px 0">
+<div class="wrap">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:48px">
+<div><h2 class="serif" style="margin:0">Homes with a name <span class="it">and a character</span></h2></div>
+<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><a class="btn btn-line" href="Rentals.dc.html" style="color:#16232A">See all homes →</a><button type="button" class="btn btn-line rnd" aria-label="Previous homes" onClick="{{homesPrev}}">←</button><button type="button" class="btn btn-line rnd" aria-label="Next homes" onClick="{{homesNext}}">→</button></div>
+</div>
+<div class="hscroll" ref="{{homesRef}}" style="display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:8px">
+<a class="card hcard" href="Unit.dc.html"><div style="aspect-ratio:4/3;border-radius:6px;overflow:hidden"><img src="./assets/69a37e1323353f8396795f3f39210efb.jpg" alt="Shaded lanai with outdoor sofas under a wooden pergola, looking out on a green lawn and palms" style="width:100%;height:100%;object-fit:cover;display:block"></div><p class="eye" style="margin:20px 0 6px;font-size:12px;color:#075056">Signature · Mauna Lani</p><h3 class="serif" style="font-size:32px;font-weight:400;margin:0 0 4px">[Home name]</h3><p class="mut" style="margin:0 0 4px;font-size:16px">[One line of character]</p><p style="margin:0;font-size:15px">4 bd · 8 guests · from [$X]/night</p><span class="tagl">Step-free</span><span class="tagl">Mauna Lani Beach</span><span class="tagl">Hilton pool</span></a>
+<a class="card hcard" href="Unit.dc.html"><div style="aspect-ratio:4/3;border-radius:6px;overflow:hidden"><img src="./assets/1baef41ec86b9b9552e60cccc303810f.jpg" alt="Bedroom with a deep green accent wall, king bed and sliding doors to a lanai" style="width:100%;height:100%;object-fit:cover;display:block"></div><p class="eye" style="margin:20px 0 6px;font-size:12px;color:#075056">Signature · Waikoloa Village</p><h3 class="serif" style="font-size:32px;font-weight:400;margin:0 0 4px">[Home name]</h3><p class="mut" style="margin:0 0 4px;font-size:16px">[One line of character]</p><p style="margin:0;font-size:15px">4 bd · 10 guests · from [$X]/night</p></a>
+<a class="card hcard" href="Unit.dc.html"><div style="aspect-ratio:4/3;border-radius:6px;overflow:hidden"><img src="./assets/86dc09717ef7566949c0b5f2caa28204.jpg" alt="Bright living room with a vaulted ceiling, tropical mural and a staircase to a loft" style="width:100%;height:100%;object-fit:cover;display:block"></div><p class="eye" style="margin:20px 0 6px;font-size:12px;color:#075056">Designer · Waikoloa Beach</p><h3 class="serif" style="font-size:32px;font-weight:400;margin:0 0 4px">[Home name]</h3><p class="mut" style="margin:0 0 4px;font-size:16px">[One line of character]</p><p style="margin:0;font-size:15px">3 bd · 6 guests · from [$X]/night</p><span class="tagl">Step-free</span><span class="tagl">Hilton pool</span></a>
+<a class="card hcard" href="Unit.dc.html"><div style="aspect-ratio:4/3;border-radius:6px;overflow:hidden"><img src="./assets/9e50edde879930186d51a599a9ec77ba.jpg" alt="Covered lanai with wicker sofas and an outdoor kitchen, sunset over the lawn and palms" style="width:100%;height:100%;object-fit:cover;display:block"></div><p class="eye" style="margin:20px 0 6px;font-size:12px;color:#075056">Signature · Kailua-Kona</p><h3 class="serif" style="font-size:32px;font-weight:400;margin:0 0 4px">[Home name]</h3><p class="mut" style="margin:0 0 4px;font-size:16px">[One line of character]</p><p style="margin:0;font-size:15px">3 bd · from [$X]/night</p><span class="tagl">Pool</span><span class="tagl">Ocean view</span></a>
+<a class="card hcard" href="Unit.dc.html"><div class="ph" style="aspect-ratio:4/3;border-radius:6px;background:#3d342b"><span>Photo · from Guesty</span></div><p class="eye" style="margin:20px 0 6px;font-size:12px;color:#075056">Designer · Mauna Lani</p><h3 class="serif" style="font-size:32px;font-weight:400;margin:0 0 4px">[Home name]</h3><p class="mut" style="margin:0 0 4px;font-size:16px">[One line of character]</p><p style="margin:0;font-size:15px">[N] bd · from [$X]/night</p></a>
+<a class="card hcard" href="Unit.dc.html"><div class="ph" style="aspect-ratio:4/3;border-radius:6px;background:#3d342b"><span>Photo · from Guesty</span></div><p class="eye" style="margin:20px 0 6px;font-size:12px;color:#075056">Designer · Waikoloa Beach</p><h3 class="serif" style="font-size:32px;font-weight:400;margin:0 0 4px">[Home name]</h3><p class="mut" style="margin:0 0 4px;font-size:16px">[One line of character]</p><p style="margin:0;font-size:15px">[N] bd · from [$X]/night</p></a>
+</div>
+</div>
+</section>
+
+<!-- AREAS -->
+<section style="padding:0 0 120px">
+<div class="wrap">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:48px">
+<div style="max-width:760px"><h2 class="serif" style="margin:0">The best places to stay <span class="it">on the Big Island of Hawaii</span></h2></div>
+<p class="mut" style="max-width:420px;margin:0">Our homes are only in the island’s most sought-after resort areas, on the sunny, dry Kohala Coast.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:24px">
+<a class="card" href="Area.dc.html" style="display:flex;flex-direction:column;border-radius:6px;overflow:hidden;background:#16232A">
+<div style="aspect-ratio:4/3;overflow:hidden"><img src="./assets/6c330ccef195df702ef6d2bc01cf292a.jpg" alt="A quiet palm-lined cove and lawn at Mauna Lani at sunset" style="width:100%;height:100%;object-fit:cover;object-position:55% 85%;display:block"></div>
+<div style="flex:1;padding:32px;background:#16232A;color:#F3F6F6"><h3 class="serif" style="font-size:40px;font-weight:400;margin:0 0 8px">Mauna Lani</h3><p style="margin:0 0 14px;font-size:16px;opacity:.88;line-height:1.5">Golf, quiet beaches, privacy. Couples, friends, celebrations.</p><p style="margin:0;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#FF5B04;font-weight:500">8 homes · from [$X]/night</p></div></a>
+<a class="card" href="Area.dc.html" style="display:flex;flex-direction:column;border-radius:6px;overflow:hidden;background:#16232A">
+<div style="aspect-ratio:4/3;overflow:hidden"><img src="./assets/c804f2a8d11de7a68cfd784391470685.jpg" alt="Palm-lined Anaehoʻomalu Bay with a catamaran on calm turquoise water at golden hour" style="width:100%;height:100%;object-fit:cover;object-position:45% 85%;display:block"></div>
+<div style="flex:1;padding:32px;background:#16232A;color:#F3F6F6"><h3 class="serif" style="font-size:40px;font-weight:400;margin:0 0 8px">Waikoloa Beach Resort</h3><p style="margin:0 0 14px;font-size:16px;opacity:.88;line-height:1.5">Beach, resort pools, shops and restaurants within walking distance. Families, first trip to the island.</p><p style="margin:0;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#FF5B04;font-weight:500">11 homes · from [$X]/night</p></div></a>
+<a class="card" href="Area.dc.html" style="display:flex;flex-direction:column;border-radius:6px;overflow:hidden;background:#16232A">
+<div style="aspect-ratio:4/3;overflow:hidden"><img src="./assets/2c270c074e2011a2e8f43d147ea0e3fe.jpg" alt="Golf course fairways, a pond and low-rise homes in Waikoloa Village at sunset" style="width:100%;height:100%;object-fit:cover;object-position:50% 80%;display:block"></div>
+<div style="flex:1;padding:32px;background:#16232A;color:#F3F6F6"><h3 class="serif" style="font-size:40px;font-weight:400;margin:0 0 8px">Waikoloa Village</h3><p style="margin:0 0 14px;font-size:16px;opacity:.88;line-height:1.5">Up the slope, away from the resort: more space for the money. Long stays, big families.</p><p style="margin:0;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#FF5B04;font-weight:500">4 homes · from [$X]/night</p></div></a>
+</div>
+</div>
+</section>
+
+
+<!-- TRUST -->
+<section style="background:#E4EEF0;padding:120px 0">
+<div class="wrap">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:40px;padding-bottom:72px;border-bottom:1px solid #b9c8cc">
+<div><p class="stat">12 <span style="font-size:.42em;font-weight:500;letter-spacing:0">years</span></p><p style="margin:10px 0 0;max-width:300px">on the Big Island</p></div>
+<div><p class="stat">24 <span style="font-size:.42em;font-weight:500;letter-spacing:0">homes</span></p><p style="margin:10px 0 0;max-width:320px">hand-picked homes in the best resort areas, each one cared for by our own team</p></div>
+<div><p class="stat">4.95<span style="color:#FF5B04">★</span></p><p style="margin:10px 0 0;max-width:320px">average rating from 1,500+ guest reviews on Airbnb · <a href="#">see them on Airbnb →</a></p></div>
+</div>
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin:72px 0 32px">
+<h2 class="serif" style="margin:0">What guests <span class="it">say</span></h2>
+<div style="display:flex;gap:10px"><button type="button" class="btn btn-line rnd" aria-label="Previous reviews">←</button><button type="button" class="btn btn-line rnd" aria-label="Next reviews">→</button></div>
+</div>
+<div style="display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px">
+<figure class="quote"><blockquote class="serif" style="margin:0 0 28px;font-size:26px;line-height:1.3">“[Real review, two or three sentences, in the guest’s own words.]”</blockquote><figcaption style="font-size:15px"><span style="color:#FF5B04;letter-spacing:.1em">★★★★★</span><br><span class="mut">[Name] · family of four, second stay · [Home name]</span></figcaption></figure>
+<figure class="quote"><blockquote class="serif" style="margin:0 0 28px;font-size:26px;line-height:1.3">“[Real review.]”</blockquote><figcaption style="font-size:15px"><span style="color:#FF5B04;letter-spacing:.1em">★★★★★</span><br><span class="mut">[Name] · couple, anniversary · [Home name]</span></figcaption></figure>
+<figure class="quote"><blockquote class="serif" style="margin:0 0 28px;font-size:26px;line-height:1.3">“[Real review.]”</blockquote><figcaption style="font-size:15px"><span style="color:#FF5B04;letter-spacing:.1em">★★★★★</span><br><span class="mut">[Name] · group of friends, golf week · [Home name]</span></figcaption></figure>
+<figure class="quote"><blockquote class="serif" style="margin:0 0 28px;font-size:26px;line-height:1.3">“[Real review.]”</blockquote><figcaption style="font-size:15px"><span style="color:#FF5B04;letter-spacing:.1em">★★★★★</span><br><span class="mut">[Name] · three generations, family reunion · [Home name]</span></figcaption></figure>
+<figure class="quote"><blockquote class="serif" style="margin:0 0 28px;font-size:26px;line-height:1.3">“[Real review.]”</blockquote><figcaption style="font-size:15px"><span style="color:#FF5B04;letter-spacing:.1em">★★★★★</span><br><span class="mut">[Name] · retired couple, month-long winter stay · [Home name]</span></figcaption></figure>
+</div>
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;margin-top:24px">
+<div style="display:flex;gap:8px" aria-hidden="true"><span style="width:28px;height:4px;border-radius:2px;background:#16232A"></span><span style="width:12px;height:4px;border-radius:2px;background:#9fb1b6"></span><span style="width:12px;height:4px;border-radius:2px;background:#9fb1b6"></span><span style="width:12px;height:4px;border-radius:2px;background:#9fb1b6"></span></div>
+<a href="#" style="font-size:16px">All 1,500+ reviews on Airbnb →</a>
+</div>
+</div>
+</section>
+
+<!-- THINGS TO DO -->
+<section style="background:#16232A;color:#F3F6F6;padding:120px 0">
+<div class="wrap">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:56px">
+<div style="max-width:760px"><h2 class="serif" style="margin:0 0 16px">Golf in the morning, <span class="it">mantas at night</span></h2><p style="margin:0;opacity:.78;max-width:620px">One island with more to do in a week than most places offer in a lifetime, all a short drive from your door.</p></div>
+<a class="btn btn-line" href="Article.dc.html" style="color:#F3F6F6">Big Island Guide →</a>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:40px 24px">
+<a class="card todo" href="Article.dc.html"><div style="aspect-ratio:4/3;border-radius:6px;overflow:hidden"><img src="./assets/bf6a202faf164ed8cbc957692f61bb3e.jpg" alt="A couple walking a seaside golf fairway past black lava rock at sunset" style="width:100%;height:100%;object-fit:cover;object-position:50% 60%;display:block"></div><h3>Golf</h3><p>Courses in Waikoloa and Mauna Lani, [N] min from our homes.</p></a>
+<a class="card todo" href="Article.dc.html"><div style="aspect-ratio:4/3;border-radius:6px;overflow:hidden"><img src="./assets/c804f2a8d11de7a68cfd784391470685.jpg" alt="Palm-lined beach and turquoise bay with a catamaran at golden hour" style="width:100%;height:100%;object-fit:cover;object-position:50% 55%;display:block"></div><h3>Beaches</h3><p>The best beaches near each of our areas.</p></a>
+<a class="card todo" href="Article.dc.html"><div style="aspect-ratio:4/3;border-radius:6px;overflow:hidden"><img src="./assets/f50d3eed09b990a66fd9c0dac8f1efc6.jpg" alt="A manta ray glides up toward snorkelers and their lights on a night swim" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block"></div><h3>Snorkeling</h3><p>Where to swim with turtles, and the night manta swim.</p></a>
+<a class="card todo" href="Article.dc.html"><div style="aspect-ratio:4/3;border-radius:6px;overflow:hidden"><img src="./assets/041edc66b8c24c6034e8d7829ffb7b4c.jpg" alt="A triathlete on a time-trial bike racing past lava fields and dry grass" style="width:100%;height:100%;object-fit:cover;object-position:55% 50%;display:block"></div><h3>Sports &amp; IRONMAN</h3><p>Tennis, cycling, and the IRONMAN World Championship in Kona each October.</p></a>
+<a class="card todo" href="Article.dc.html"><div style="aspect-ratio:4/3;border-radius:6px;overflow:hidden"><img src="./assets/bffda349bb987af855fd76ae762df08a.jpg" alt="Visitors watching a glowing lava flow and fountain at night in Volcanoes National Park" style="width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block"></div><h3>Volcanoes National Park</h3><p>A full day trip, about 2–2.5 hours each way.</p></a>
+<a class="card todo" href="Article.dc.html"><div style="aspect-ratio:4/3;border-radius:6px;overflow:hidden"><img src="./assets/3a3363e7e4b10fd76c2d3ce73581d525.jpg" alt="A humpback whale breaching at sunset, an outrigger canoe in the foreground" style="width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block"></div><h3>Whale watching</h3><p>December to April, often visible right from shore.</p></a>
+<a class="card todo" href="Article.dc.html"><div style="aspect-ratio:4/3;border-radius:6px;overflow:hidden"><img src="./assets/c395525affc5b2c3b33d5d2fb150a932.jpg" alt="A couple at a beachside luau dinner watching a fire knife dancer at dusk" style="width:100%;height:100%;object-fit:cover;object-position:50% 55%;display:block"></div><h3>Hawaiian culture &amp; luau</h3><p>Luau on the coast, petroglyph trails, local history.</p></a>
+<a class="card todo" href="Article.dc.html"><div style="aspect-ratio:4/3;border-radius:6px;overflow:hidden"><img src="./assets/6c1f0acb1af55c964bc974cb56e2ea57.jpg" alt="A bowl of ahi poke on a lanai table at sunset, ocean and palms behind" style="width:100%;height:100%;object-fit:cover;object-position:50% 55%;display:block"></div><h3>Food</h3><p>Poke, farmers markets, Kona coffee farms.</p></a>
+</div>
+</div>
+</section>
+
+<!-- PEOPLE -->
+<section style="padding:120px 0">
+<div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:64px;align-items:center">
+<img src="./assets/84af78abf0b00a1348d1623ac3ac0488.jpg" alt="Alexey Blokhin, Broker/Owner of Aloha Hello, on the beach at golden hour" style="width:100%;height:640px;object-fit:cover;object-position:35% 30%;border-radius:6px;display:block">
+<div>
+<p class="eye" style="color:#075056">The people behind it</p>
+<p class="serif" style="font-size:clamp(32px,3.6vw,46px);line-height:1.15;margin:0 0 32px">“[Founder’s two or three sentences: why the Big Island, <span class="it">why this way</span>.]”</p>
+<p style="margin:0 0 36px"><strong style="font-weight:600">Alexey Blokhin</strong>, Broker/Owner</p>
+<a class="btn btn-line" href="#" style="color:#16232A">Meet the team →</a>
+</div>
+</div>
+</section>
+
+<!-- PLAN -->
+<section style="padding:120px 0;background:#E4EEF0">
+<div class="wrap">
+<div style="max-width:820px;margin:0 auto;text-align:center">
+<h2 class="serif" style="margin:0">Book direct and save 15% <span class="it">compared to Airbnb</span></h2>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:24px;max-width:1040px;margin:56px auto 0">
+<div style="background:#16232A;color:#F3F6F6;border-radius:6px;padding:44px;display:flex;flex-direction:column;align-items:flex-start"><h3 class="serif" style="font-size:36px;font-weight:400;margin:0 0 12px">Book it yourself</h3><p style="opacity:.8;margin:0 0 32px;flex:1">Live calendar and prices, instant booking. Save 15% compared to booking the same home on Airbnb: no platform service fee.</p><a class="btn btn-o" href="Rentals.dc.html">Browse homes</a></div>
+<div style="background:#fff;border-radius:6px;padding:44px;display:flex;flex-direction:column;align-items:flex-start"><div style="display:flex;align-items:center;gap:16px;margin-bottom:16px"><img src="./assets/1f389c1e4d570ad43b12ab3d0e8996d3.jpg" alt="Dmitry, Head of Guest Experience" style="width:112px;height:112px;border-radius:50%;object-fit:cover;object-position:50% 30%;display:block;flex:0 0 112px"><div><h3 class="serif" style="font-size:36px;font-weight:400;margin:0;line-height:1.1">Plan with Dmitry</h3><p class="mut" style="margin:0;font-size:15px">Head of Guest Experience</p></div></div><p style="margin:0 0 32px;flex:1">Golf week, family reunion, no stairs for grandma, walk to the beach? Tell Dmitry what this trip is for, and he’ll hand-pick the 2–3 homes that fit it best. Usually within the hour. Same 15% savings as booking online.</p><a class="btn btn-line" href="#" style="color:#16232A">Ask Dmitry a question</a></div>
+</div>
+</div>
+</section>
+
+<!-- OWNERS BRIDGE -->
+<section style="background:#075056;color:#F3F6F6;padding:72px 0">
+<div class="wrap" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:28px">
+<p class="serif" style="font-size:clamp(30px,3.2vw,40px);line-height:1.15;margin:0;max-width:640px">Own a home on the Kohala Coast, <span class="it">or thinking of buying one?</span></p>
+<div style="display:flex;flex-wrap:wrap;gap:12px"><a class="btn btn-o" href="Homeowners.dc.html">Get a free rental estimate</a><a class="btn btn-line" href="Homeowners.dc.html" style="color:#F3F6F6">Invest in a vacation rental</a></div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#16232A;color:#F3F6F6;padding:88px 0 40px">
+<div class="wrap">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:40px">
+<div>
+<img src="./assets/67dacdfd5675ba36b03ca46eb9953074.svg" alt="Aloha Hello Vacation Rentals" style="height:56px;width:auto;display:block">
+<p style="font-size:15px;margin:20px 0;line-height:1.8"><a href="tel:+16504027916" style="color:#F3F6F6;text-decoration:none;opacity:.8">+1 (650) 402-7916</a><br><a href="mailto:infoahvr@gmail.com" style="color:#F3F6F6;text-decoration:none;opacity:.8">infoahvr@gmail.com</a></p>
+<p style="font-size:14px;opacity:.75;margin:0">Aloha Hello Vacation Rentals<br>Hawaii real estate license RB-24433</p>
+<div style="display:flex;gap:10px;margin-top:20px"><a href="#" aria-label="Instagram" class="soc"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"></circle></svg></a><a href="#" aria-label="Facebook" class="soc"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"></path></svg></a><a href="#" aria-label="YouTube" class="soc"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"></rect><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"></path></svg></a><a href="#" aria-label="TikTok" class="soc"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 2.6 2.3 4.2 5 4.5"></path></svg></a></div>
+</div>
+<div class="foot" style="display:flex;flex-direction:column;gap:10px"><p class="eye" style="color:#FF5B04;margin:0 0 6px">Vacation Rentals</p><a href="#">All Rentals</a><a href="#">Mauna Lani</a><a href="#">Waikoloa Beach Resort</a><a href="#">Waikoloa Village</a><a href="#">Step-Free Stays</a></div>
+<div class="foot" style="display:flex;flex-direction:column;gap:10px"><p class="eye" style="color:#FF5B04;margin:0 0 6px">Big Island</p><a href="#">Mauna Lani</a><a href="#">Waikoloa Beach Resort</a><a href="#">Waikoloa Village</a><a href="#">Communities</a><a href="#">Big Island Guide</a></div>
+<div class="foot" style="display:flex;flex-direction:column;gap:10px"><p class="eye" style="color:#FF5B04;margin:0 0 6px">Homeowners</p><a href="#">Property Management</a><a href="Invest.dc.html">Invest in a Vacation Rental</a><a href="#">Free Rental Estimate</a><a href="#">Design &amp; Renovation</a><a href="#">Results &amp; Reports</a><a href="#">Owner FAQ</a></div>
+<div class="foot" style="display:flex;flex-direction:column;gap:10px"><p class="eye" style="color:#FF5B04;margin:0 0 6px">About</p><a href="#">Our Team</a><a href="#">Guest Info</a><a href="#">Contact</a><a href="#">Privacy Policy</a></div>
+</div>
+<div class="foot" style="margin:72px 0 0;padding-top:24px;border-top:1px solid rgba(243,246,246,.18);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;font-size:13px"><span style="opacity:.65">© Aloha Hello Vacation Rentals · RB-24433</span><span style="display:flex;flex-wrap:wrap;gap:8px 24px"><a href="#" style="font-size:13px">Privacy Policy</a><a href="#" style="font-size:13px">Terms of Use</a><a href="#" style="font-size:13px">Rental Agreement</a></span></div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":8800}}'>
+class Component extends DCLogic {
+renderVals() {
+const step = (d) => () => { const el = this.homesEl; if (el) el.scrollBy({ left: d * el.clientWidth * 0.8, behavior: "smooth" }); };
+return { homesRef: (el) => { this.homesEl = el; }, homesPrev: step(-1), homesNext: step(1) };
+}
+}
+</script>
+</body>
+</html>
