@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Guide article — design v2</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#16232A}
+a{color:#16232A}a:hover{color:#075056}
+.pg{font-family:'Outfit',system-ui,sans-serif;color:#16232A;background:#F3F6F6;font-size:18px;line-height:1.6}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px;box-sizing:border-box}
+.serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.01em}
+.it{font-style:italic}
+.eye{font-size:13px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;margin:0 0 18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;box-sizing:border-box;border:1.5px solid transparent;white-space:nowrap;font-family:inherit;cursor:pointer;background:transparent}
+.btn-o{background:#FF5B04;color:#fff;font-weight:700;font-size:19px}
+.btn-o:hover{background:#e84f00;color:#fff}
+.btn-line{border-color:currentColor}
+h2.serif{font-size:clamp(40px,5vw,60px);line-height:1.04;margin:0 0 20px}
+h3{font-size:22px;line-height:1.25;margin:0 0 6px;font-weight:600}
+.mut{opacity:.72}
+.nav a{color:#16232A;text-decoration:none;font-size:16px;font-weight:500}
+.nav a:hover{color:#075056}
+.fld{display:flex;flex-direction:column;gap:2px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#4b5a60;flex:1 1 170px;padding:10px 22px;border-right:1px solid #cdd8db}
+.fld input,.fld select{border:0;background:transparent;font-family:inherit;font-size:17px;color:#16232A;padding:0;min-height:30px;letter-spacing:0;text-transform:none}
+.ph{position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:16px;box-sizing:border-box;color:#F3F6F6;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.ph span{opacity:.7}
+.std{border-top:1px solid rgba(243,246,246,.28);padding-top:22px}
+.std svg{width:28px;height:28px;padding:14px;border-radius:50%;background:rgba(243,246,246,.12);stroke:#F3F6F6;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-bottom:20px;display:block}
+.std h3{color:#F3F6F6;font-size:20px}
+.std p{color:#F3F6F6;opacity:.8;font-size:16px;margin:0;line-height:1.55}
+.card{text-decoration:none;color:#16232A;display:block}
+.card img{transition:transform .6s ease}
+.card:hover img{transform:scale(1.03)}
+.tagl{display:inline-block;font-size:13px;padding:4px 12px;border-radius:999px;background:#E4EEF0;color:#16232A;margin:8px 6px 0 0}
+.stat{font-family:'Outfit',system-ui,sans-serif;font-weight:700;font-size:clamp(56px,6vw,80px);line-height:1;letter-spacing:-.03em;margin:0}
+.quote{background:#fff;border-radius:6px;padding:32px;flex:0 0 380px;scroll-snap-align:start;margin:0;display:flex;flex-direction:column;justify-content:space-between;box-sizing:border-box}
+.rnd{width:52px;height:52px;padding:0;border-color:#16232A;color:#16232A}
+.foot a{color:#F3F6F6;text-decoration:none;font-size:15px;opacity:.8}
+.foot a:hover{opacity:1;color:#FF5B04}
+.soc{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid rgba(243,246,246,.35);border-radius:50%;color:#F3F6F6}
+.soc:hover{color:#16232A;background:#F3F6F6}
+.todo{color:#F3F6F6}
+.todo .ph{aspect-ratio:4/3;border-radius:6px}
+.todo h3{margin-top:16px;font-size:20px}
+.todo p{font-size:15px;margin:0;opacity:.72;line-height:1.5}
+.hscroll{scrollbar-width:none}
+.hscroll::-webkit-scrollbar{display:none}
+.hcard{flex:0 0 calc((100% - 72px) / 3.4);min-width:260px;scroll-snap-align:start}
+
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:8px 16px;border-radius:999px;background:#fff;border:1px solid #cdd8db;color:#16232A;text-decoration:none}
+.pill.on{background:#16232A;color:#F3F6F6;border-color:#16232A}
+.fact{padding:18px 20px;border-right:1px solid #dbe4e6}
+.fact:last-child{border-right:0}
+.fact small{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#4b5a60;margin-bottom:4px}
+.fact b{font-size:22px;font-weight:600}
+.sec{padding:64px 0;border-top:1px solid #dbe4e6}
+.sec h2.serif{font-size:44px;margin:0 0 28px}
+.feat img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;display:block}
+.feat h3{margin:18px 0 6px;font-size:21px}
+.feat p{font-size:16px;margin:0;opacity:.8;line-height:1.55}
+.room{background:#fff;border-radius:6px;padding:22px}
+.room .lv{display:inline-block;font-size:13px;padding:3px 10px;border-radius:999px;background:#E4EEF0;margin-top:10px}
+.room .lv.sf{background:#075056;color:#F3F6F6}
+.am h3{font-size:18px;margin:0 0 10px}
+.am li{font-size:16px;margin:0 0 6px;list-style:none}
+.am ul{padding:0;margin:0}
+.near{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #dbe4e6;font-size:17px}
+.wd{background:#fff;border-radius:16px;box-shadow:0 18px 50px rgba(22,35,42,.14);padding:28px}
+.wbox{border:1px solid #b9c7cb;border-radius:12px;overflow:hidden;margin:18px 0 16px}
+.wbox .c{padding:12px 16px}
+.wbox small{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4b5a60}
+.wbox span{font-size:17px}
+.row2{display:flex;justify-content:space-between;align-items:baseline;font-size:16px;padding:5px 0}
+.save{background:#E4EEF0;border-radius:8px;padding:12px 14px;font-size:15px;margin-top:16px}
+.hc .gal{position:relative;aspect-ratio:4/3;border-radius:6px;overflow:hidden}
+.hc .gal img{width:100%;height:100%;object-fit:cover;display:block}
+.hc .ar{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;font-size:18px;color:#16232A}
+.hc .dots{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:5px}
+.hc .dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.55)}
+.hc .dots i:first-child{background:#fff}
+.badge{position:absolute;left:12px;top:12px;background:#fff;color:#16232A;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.spec{font-size:15px;display:flex;gap:16px;margin:10px 0 0}
+.sl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#4b5a60;margin:0 0 14px}
+.beds{display:flex;align-items:flex-end;gap:8px;margin:0 0 14px;height:38px}
+.phx{background:linear-gradient(135deg,#cfe0e3 0%,#e3ece4 60%,#bcd6dd 100%);display:flex;align-items:flex-end;padding:14px;box-sizing:border-box;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#4b5a60}
+.tile{position:relative;border-radius:8px;overflow:hidden;display:block;text-decoration:none;color:#F3F6F6}
+.tile img{width:100%;height:100%;object-fit:cover;display:block}
+.tile .cap{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(180deg,rgba(22,35,42,0),rgba(22,35,42,.85))}
+.faq{border-top:1px solid #cdd8db;padding:20px 0;display:flex;justify-content:space-between;font-size:18px;font-weight:500}
+.play{display:inline-flex;align-items:center;gap:12px;color:#F3F6F6;text-decoration:none;font-weight:600}
+.play i{width:56px;height:56px;border-radius:50%;background:rgba(243,246,246,.18);border:1.5px solid #F3F6F6;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:18px}
+.am2{background:#fff;border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.am2 svg{width:26px;height:26px;stroke:#075056;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.am2 h3{font-size:18px;margin:0}
+.am2 p{font-size:15px;margin:0;opacity:.75;line-height:1.5}
+.ofld{display:flex;flex-direction:column;gap:6px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:rgba(243,246,246,.75)}
+.ofld input,.ofld select{min-height:50px;border-radius:8px;border:0;padding:0 14px;font-family:inherit;font-size:16px;color:#16232A;background:#F3F6F6;letter-spacing:0;text-transform:none}
+.art p{font-size:19px;line-height:1.7;margin:0 0 20px}
+.art h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:42px;line-height:1.1;margin:56px 0 18px}
+.art h3{font-size:21px;margin:28px 0 8px}
+.art ul{padding-left:22px;margin:0 0 20px}.art li{font-size:18px;line-height:1.6;margin:0 0 8px}
+.tbl{width:100%;border-collapse:collapse;font-size:16px;margin:8px 0 24px;background:#fff;border-radius:10px;overflow:hidden}
+.tbl th,.tbl td{text-align:left;padding:14px 16px;border-bottom:1px solid #dbe4e6;vertical-align:top}
+.tbl th{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#4b5a60;font-weight:500;background:#E4EEF0}
+.callout{background:#075056;color:#F3F6F6;border-radius:10px;padding:24px 28px;margin:8px 0 28px}
+.callout p{font-size:17px;margin:0;color:#F3F6F6}
+.toc a{display:block;font-size:15px;color:#16232A;text-decoration:none;padding:7px 0;border-bottom:1px solid #dbe4e6}
+.toc a.on{color:#075056;font-weight:600}
+</style>
+</helmet>
+<div class="pg">
+<header style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;padding:18px max(40px, calc((100% - 1280px) / 2 + 40px));background:#fff;color:#16232A;box-shadow:0 1px 0 rgba(22,35,42,.08);position:relative;z-index:3">
+<a href="HomeDesign.dc.html" aria-label="Aloha Hello home" style="display:flex;align-items:center"><img src="./assets/15c3d4fd7ed48094b2cc376fcae6f058.svg" alt="Aloha Hello Vacation Rentals" style="height:56px;width:auto;display:block"></a>
+<nav class="nav" aria-label="Main" style="display:flex;flex-wrap:wrap;gap:8px 36px"><a href="Rentals.dc.html">Vacation Rentals</a><a href="Area.dc.html">Big Island</a><a href="Homeowners.dc.html">Homeowners</a><a href="Invest.dc.html">Invest</a><a href="#">About</a></nav>
+<div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap"><a href="tel:+16504027916" style="color:#16232A;text-decoration:none;line-height:1.2"><span style="display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#4b5a60">Call us · local team</span><span style="font-size:19px;font-weight:500">+1 (650) 402-7916</span></a><a class="btn btn-o" href="Rentals.dc.html">Book Now</a></div>
+</header>
+<section style="position:relative;height:640px;overflow:hidden;color:#F3F6F6;background:#0b1820">
+<img src="./assets/f50d3eed09b990a66fd9c0dac8f1efc6.jpg" alt="A manta ray glides up toward snorkelers and their lights on a night swim" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0">
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,24,32,.2) 0%,rgba(11,24,32,.1) 40%,rgba(11,24,32,.9) 100%)"></div>
+<div class="wrap" style="position:absolute;left:0;right:0;bottom:56px">
+<p style="font-size:14px;margin:0 0 16px;opacity:.85"><a href="HomeDesign.dc.html" style="color:inherit">Home</a> › <a href="#" style="color:inherit">Big Island Guide</a> › Things to do</p>
+<h1 class="serif" style="font-size:84px;line-height:1;margin:0 0 18px;max-width:1000px">Night snorkeling with <span class="it">manta rays in Kona</span></h1>
+<p style="font-size:16px;margin:0;opacity:.85">By Dmitry, Head of Guest Experience · Updated October 2026 · 8 min read</p>
+</div>
+</section>
+
+<div class="wrap" style="padding-top:64px">
+<div style="display:grid;grid-template-columns:220px minmax(0,720px) 300px;gap:56px;align-items:start">
+<nav class="toc" style="position:sticky;top:24px">
+<p class="sl" style="color:#075056">In this guide</p>
+<a class="on" href="#">What it’s like</a><a href="#">Where the mantas are</a><a href="#">Prices and booking</a><a href="#">When to go</a><a href="#">What to bring</a><a href="#">Mantas: look, don’t touch</a><a href="#">Getting there from our homes</a><a href="#">FAQ</a>
+</nav>
+
+<article class="art">
+<p style="font-size:22px;line-height:1.6">You float on the surface, holding a lit board. Plankton swirls in the beam. Then a manta ray the width of a car rises out of the dark, opens its mouth and somersaults a foot below you. For many of our guests it’s the best hour of the whole trip.</p>
+
+<div class="callout"><p><strong>Short version:</strong> book a small-group night snorkel from Keauhou Bay or Honokōhau Harbor, about $100–$170 per person. Sighting rates are above 90% year-round, highest April to October. From Mauna Lani it’s a [35–50] minute drive.</p></div>
+
+<h2>What it’s <span class="it">like</span></h2>
+<p>Tours leave around sunset. The boat ride is short, from five minutes to half an hour depending on the harbor. You get a wetsuit top, mask and fins, then slip into the water and hold onto a floating light board with the group. You don’t swim much; you float and watch.</p>
+<p>The lights pull in plankton, and the plankton pulls in the mantas. Kona’s reef mantas are gentle filter feeders with no stinger. Some have been visiting the same spots for years, and local researchers know them by name.</p>
+
+<h2>Where the <span class="it">mantas are</span></h2>
+<p>Two sites on the Kona coast work almost every night. Most tours go to one of them.</p>
+<table class="tbl">
+<tr><th>Site</th><th>Harbor</th><th>Boat ride</th><th>Good for</th></tr>
+<tr><td><strong>Manta Village</strong><br><span class="mut">off Keauhou</span></td><td>Keauhou Bay</td><td>~5 min</td><td>Families, anyone prone to seasickness</td></tr>
+<tr><td><strong>Manta Heaven</strong><br><span class="mut">Garden Eel Cove, near the airport</span></td><td>Honokōhau Harbor</td><td>20–30 min</td><td>Guests staying north: Mauna Lani, Waikoloa</td></tr>
+</table>
+
+<h2>Prices and <span class="it">booking</span></h2>
+<ul>
+<li>Shared snorkel tour: about <strong>$100–$170</strong> per person, plus taxes and harbor fees.</li>
+<li>Ride-along seat (stay on the boat): about $70–$100.</li>
+<li>Private charter: from about $1,050 for the boat.</li>
+<li>Book 3–6 weeks ahead in summer and holidays. Most operators offer a free re-ride if no mantas show.</li>
+</ul>
+<div style="background:#fff;border-radius:10px;padding:22px 26px;display:flex;align-items:center;gap:18px;margin:0 0 20px"><img src="./assets/1f389c1e4d570ad43b12ab3d0e8996d3.jpg" alt="Dmitry" style="width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 30%;flex:0 0 64px"><p style="margin:0;font-size:17px"><strong>Staying with us?</strong> Dmitry books the tour we trust for your dates and sends you the meeting point. <a href="#" style="color:#075056;font-weight:600">Ask Dmitry →</a></p></div>
+
+<h2>When <span class="it">to go</span></h2>
+<p>Mantas feed here all year. April to October usually brings calmer water and the best odds. Winter swells can cancel a night; plan it early in your trip so there’s room to reschedule.</p>
+
+<h2>What <span class="it">to bring</span></h2>
+<ul><li>Swimsuit under your clothes, a towel and a warm layer for the ride back</li><li>Motion-sickness tablets if you need them, taken an hour before</li><li>No sunscreen or lotion: it’s dark, and the gear grips better on dry skin</li><li>Prescription mask if you wear glasses (ask the operator)</li></ul>
+
+<h2>Mantas: <span class="it">look, don’t touch</span></h2>
+<p>Keep your hands on the board and your legs up. Touching removes the protective coating on a manta’s skin, and Hawaii law protects them. Let them come to you; they will.</p>
+
+<h2>Getting there <span class="it">from our homes</span></h2>
+<table class="tbl">
+<tr><th>Staying in</th><th>To Honokōhau Harbor</th><th>To Keauhou Bay</th></tr>
+<tr><td>Mauna Lani</td><td>[~35] min</td><td>[~55] min</td></tr>
+<tr><td>Waikoloa Beach Resort</td><td>[~30] min</td><td>[~50] min</td></tr>
+<tr><td>Waikoloa Village</td><td>[~40] min</td><td>[~60] min</td></tr>
+</table>
+
+<h2 id="faq">Manta snorkel <span class="it">FAQ</span></h2>
+<div class="faq"><span>Is the manta ray night snorkel safe for kids?</span><span style="font-size:24px;line-height:1;color:#075056">+</span></div><div class="faq"><span>Do I need to be a strong swimmer?</span><span style="font-size:24px;line-height:1;color:#075056">+</span></div><div class="faq"><span>What if we don’t see any mantas?</span><span style="font-size:24px;line-height:1;color:#075056">+</span></div><div class="faq"><span>Snorkel or dive: which is better?</span><span style="font-size:24px;line-height:1;color:#075056">+</span></div><div class="faq"><span>Can I get seasick on the boat?</span><span style="font-size:24px;line-height:1;color:#075056">+</span></div>
+<p class="mut" style="font-size:14px;margin:24px 0 0">Prices and sighting rates from operator data, 2026. Check the operator before booking.</p>
+</article>
+
+<aside style="position:sticky;top:24px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#fff;border-radius:10px;padding:24px">
+<p class="sl" style="color:#075056;margin:0 0 10px">Quick facts</p>
+<div class="near" style="padding:10px 0"><span>Price</span><strong>$100–$170</strong></div>
+<div class="near" style="padding:10px 0"><span>Length</span><strong>~2 hours</strong></div>
+<div class="near" style="padding:10px 0"><span>Min. age</span><strong>usually 5+</strong></div>
+<div class="near" style="padding:10px 0"><span>Sightings</span><strong>90%+</strong></div>
+<div class="near" style="padding:10px 0;border:0"><span>Best months</span><strong>Apr–Oct</strong></div>
+</div>
+<div style="background:#16232A;color:#F3F6F6;border-radius:10px;overflow:hidden">
+<div style="aspect-ratio:4/3"><img src="./assets/9e50edde879930186d51a599a9ec77ba.jpg" alt="Covered lanai at sunset" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+<div style="padding:20px 22px"><h3 class="serif" style="font-size:28px;font-weight:400;margin:0 0 6px;color:#F3F6F6">Stay 35 minutes from the mantas</h3><p style="margin:0 0 16px;font-size:15px;opacity:.8">24 homes in Mauna Lani and Waikoloa. Book direct, save 15% vs Airbnb.</p><a class="btn btn-o" href="RentalsDesign.dc.html" style="width:100%">See homes</a></div>
+</div>
+</aside>
+</div>
+</div>
+
+<section style="background:#E4EEF0;padding:100px 0;margin-top:100px">
+<div class="wrap">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px"><h2 class="serif" style="margin:0">More things to do <span class="it">nearby</span></h2><a class="btn btn-line" href="#">Big Island Guide</a></div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px">
+<a class="card" href="#" style="text-decoration:none"><div style="aspect-ratio:4/3;border-radius:8px;overflow:hidden"><img src="./assets/3a3363e7e4b10fd76c2d3ce73581d525.jpg" alt="Whale watching from shore" style="width:100%;height:100%;object-fit:cover;display:block;"></div><p class="sl" style="margin:14px 0 4px;color:#075056">Things to do</p><h3 class="serif" style="font-size:26px;font-weight:400;margin:0">Whale watching from shore</h3><p class="mut" style="margin:4px 0 0;font-size:15px">December to April, where to look</p></a>
+<a class="card" href="#" style="text-decoration:none"><div style="aspect-ratio:4/3;border-radius:8px;overflow:hidden"><img src="./assets/bf6a202faf164ed8cbc957692f61bb3e.jpg" alt="Golf at Mauna Lani" style="width:100%;height:100%;object-fit:cover;display:block;"></div><p class="sl" style="margin:14px 0 4px;color:#075056">Things to do</p><h3 class="serif" style="font-size:26px;font-weight:400;margin:0">Golf at Mauna Lani</h3><p class="mut" style="margin:4px 0 0;font-size:15px">Two courses on the lava</p></a>
+<a class="card" href="#" style="text-decoration:none"><div style="aspect-ratio:4/3;border-radius:8px;overflow:hidden"><img src="./assets/bffda349bb987af855fd76ae762df08a.jpg" alt="Volcanoes National Park" style="width:100%;height:100%;object-fit:cover;display:block;"></div><p class="sl" style="margin:14px 0 4px;color:#075056">Things to do</p><h3 class="serif" style="font-size:26px;font-weight:400;margin:0">Volcanoes National Park</h3><p class="mut" style="margin:4px 0 0;font-size:15px">A full day trip, done right</p></a>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#16232A;color:#F3F6F6;padding:88px 0 40px">
+<div class="wrap">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:40px">
+<div>
+<img src="./assets/67dacdfd5675ba36b03ca46eb9953074.svg" alt="Aloha Hello Vacation Rentals" style="height:56px;width:auto;display:block">
+<p style="font-size:15px;margin:20px 0;line-height:1.8"><a href="tel:+16504027916" style="color:#F3F6F6;text-decoration:none;opacity:.8">+1 (650) 402-7916</a><br><a href="mailto:infoahvr@gmail.com" style="color:#F3F6F6;text-decoration:none;opacity:.8">infoahvr@gmail.com</a></p>
+<p style="font-size:14px;opacity:.75;margin:0">Aloha Hello Vacation Rentals<br>Hawaii real estate license RB-24433</p>
+<div style="display:flex;gap:10px;margin-top:20px"><a href="#" aria-label="Instagram" class="soc"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"></circle></svg></a><a href="#" aria-label="Facebook" class="soc"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"></path></svg></a><a href="#" aria-label="YouTube" class="soc"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"></rect><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"></path></svg></a><a href="#" aria-label="TikTok" class="soc"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 2.6 2.3 4.2 5 4.5"></path></svg></a></div>
+</div>
+<div class="foot" style="display:flex;flex-direction:column;gap:10px"><p class="eye" style="color:#FF5B04;margin:0 0 6px">Vacation Rentals</p><a href="#">All Rentals</a><a href="#">Mauna Lani</a><a href="#">Waikoloa Beach Resort</a><a href="#">Waikoloa Village</a></div>
+<div class="foot" style="display:flex;flex-direction:column;gap:10px"><p class="eye" style="color:#FF5B04;margin:0 0 6px">Big Island</p><a href="#">Mauna Lani</a><a href="#">Waikoloa Beach Resort</a><a href="#">Waikoloa Village</a><a href="#">Communities</a><a href="#">Big Island Guide</a></div>
+<div class="foot" style="display:flex;flex-direction:column;gap:10px"><p class="eye" style="color:#FF5B04;margin:0 0 6px">Homeowners</p><a href="#">Property Management</a><a href="Invest.dc.html">Invest in a Vacation Rental</a><a href="#">Free Rental Estimate</a><a href="#">Design &amp; Renovation</a><a href="#">Results &amp; Reports</a><a href="#">Owner FAQ</a></div>
+<div class="foot" style="display:flex;flex-direction:column;gap:10px"><p class="eye" style="color:#FF5B04;margin:0 0 6px">About</p><a href="#">Our Team</a><a href="#">Guest Info</a><a href="#">Contact</a><a href="#">Privacy Policy</a></div>
+</div>
+<div class="foot" style="margin:72px 0 0;padding-top:24px;border-top:1px solid rgba(243,246,246,.18);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;font-size:13px"><span style="opacity:.65">© Aloha Hello Vacation Rentals · RB-24433</span><span style="display:flex;flex-wrap:wrap;gap:8px 24px"><a href="#" style="font-size:13px">Privacy Policy</a><a href="#" style="font-size:13px">Terms of Use</a><a href="#" style="font-size:13px">Rental Agreement</a></span></div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5700}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
